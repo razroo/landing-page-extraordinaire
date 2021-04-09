@@ -1,5 +1,8 @@
 # Razroo Landing Page Extraordinaire
-Razroo's Extra Ordinary Landing Page
+Razroo's Extra Ordinary Landing Page. Large portions of landing page
+written in html/scss only. Angular app. Person who fiddles around with landing 
+page and creates a masterpiece earns an internship at Razroo for 
+the month of July. Contest ends when counter is over.
 
 # To install 
 `npm install`
