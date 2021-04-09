@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+@import 'libs/common/styles/_themes';
+
+.bg {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: map_get($razroo-background-yellow, 50);
+  overflow: auto;
+}

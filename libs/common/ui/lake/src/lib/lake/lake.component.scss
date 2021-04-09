@@ -1,0 +1,111 @@
+// n is number of stars required
+@function multiple-box-shadow ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
+  }
+  @return unquote($value);
+}
+
+// Lake Animation
+@function lake-animation ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n {
+    $value: '#{$value}, #{random(2000)}px  #{random(2000)}px #FFF'
+  }
+  @return unquote($value);
+}
+
+$shadows-large: multiple-box-shadow(1000);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-small: multiple-box-shadow(700);
+
+$lake-animation-large: lake-animation(300);
+$lake-animation-large--modified: lake-animation(100);
+$lake-animation-medium: lake-animation(150);
+
+.lake {
+  height:328px;
+  background:#012a46;
+  border-top:21px solid #002112;
+  overflow: hidden;
+}
+
+.lake-current-large {
+  width: 90px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $lake-animation-large;
+  animation: animCurrent 100s linear infinite;
+  opacity: 0.2;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 2000px;
+    width: 30px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $lake-animation-large;
+  }
+}
+
+.lake-current-large--modified {
+  width: 90px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $lake-animation-large--modified;
+  animation: animCurrent 100s linear infinite;
+  opacity: 0.4;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 2000px;
+    width: 30px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $lake-animation-large--modified;
+  }
+}
+
+.lake-current-medium {
+  width: 45px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $lake-animation-medium;
+  animation: animCurrent 100s linear infinite;
+  opacity: 0.4;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $lake-animation-medium;
+  }
+}
+
+.lake-current-small {
+  width: 3px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: animCurrent 3s linear infinite;
+  opacity: 0.2;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+
+@keyframes animCurrent {
+  0% {
+    transform: translateX(0px)
+  }
+  100% {
+    transform: translateX(-2000px);
+  }
+}

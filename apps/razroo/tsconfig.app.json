@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": []
+  },
+  "include": [
+    "**/*.ts",
+    "../../libs/razroo/product/src/index.ts",
+  ],
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "angularCompilerOptions": {
+    "enableIvy": true
+  }
+}

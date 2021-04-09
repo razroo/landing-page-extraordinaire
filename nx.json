@@ -1,0 +1,114 @@
+{
+  "npmScope": "razroo",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "razroo-e2e": {
+      "tags": []
+    },
+    "razroo": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "razroo-home": {
+      "tags": []
+    },
+    "razroo-common-ui": {
+      "tags": []
+    },
+    "razroo-blog": {
+      "tags": []
+    },
+    "razroo-data-graphql": {
+      "tags": []
+    },
+    "razroo-data-services": {
+      "tags": []
+    },
+    "razroo-data-models": {
+      "tags": []
+    },
+    "razroo-data-access-posts": {
+      "tags": []
+    },
+    "razroo-ui-blog-content": {
+      "tags": []
+    },
+    "common-ui-bg": {
+      "tags": []
+    },
+    "common-directives": {
+      "tags": []
+    },
+    "razroo-about": {
+      "tags": []
+    },
+    "razroo-product": {
+      "tags": []
+    },
+    "razroo-books": {
+      "tags": []
+    },
+    "common-ui-shelf": {
+      "tags": []
+    },
+    "common-ui-hanging-light": {
+      "tags": []
+    },
+    "common-ui-particles": {
+      "tags": []
+    },
+    "common-ui-rocket-ship": {
+      "tags": []
+    },
+    "common-ui-factory": {
+      "tags": []
+    },
+    "common-ui-launch-pad": {
+      "tags": []
+    },
+    "common-ui-star-field": {
+      "tags": []
+    },
+    "common-ui-mountains": {
+      "tags": []
+    },
+    "razroo-consulting": {
+      "tags": []
+    },
+    "common-services": {
+      "tags": []
+    },
+    "common-models": {
+      "tags": []
+    },
+    "common-styles": {
+      "tags": []
+    },
+    "common-ui-lake": {
+      "tags": []
+    },
+    "razroo-common-directives": {
+      "tags": []
+    },
+    "common-ui-submarine": {
+      "tags": []
+    },
+    "common-ui-table-of-contents": {
+      "tags": []
+    },
+    "common-ui-street-light": {
+      "tags": []
+    },
+    "common-typings": {
+      "tags": []
+    }
+  }
+}

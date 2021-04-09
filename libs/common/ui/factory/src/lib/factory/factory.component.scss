@@ -1,0 +1,259 @@
+/*
+  variables used through component sass
+*/
+$factory-width: 300px;
+
+:host {
+  display: flex;
+}
+
+@keyframes goSmoke {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2,2) translateY(-20px) rotate(30deg)}
+}
+
+@keyframes goWindow {
+  0% {background-color: #F5F19A;}
+  100% {background-color: #D3BD54;}
+}
+
+@keyframes goWheels {
+  100% {transform: rotate(360deg);
+  }
+}
+
+@keyframes goPackage {
+  83% {
+    transform: translateX(120px);
+  }
+  100% {
+    transform: translateX(120px);
+  }
+}
+
+.factory {
+  display: flex;
+  flex-direction: column;
+  width: $factory-width;
+}
+
+.delivery-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  width: 100px;
+}
+
+.band {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 13px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #58595B;
+}
+
+.wheels{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.wheel {
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background-color: #414042;
+}
+
+.wheel:after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 2px;
+  background-color: #F5F19A;
+  position: absolute;
+  top: 5px;
+}
+
+#wheel1 {
+  animation: goWheels 0.5s 0.1s linear infinite normal;
+}
+#wheel2 {
+  animation: goWheels 0.5s 0.2s linear infinite normal;
+}
+#wheel3 {
+  animation: goWheels 0.5s 0.3s linear infinite normal;
+}
+#wheel4 {
+  animation: goWheels 0.5s 0.4s linear infinite normal;
+}
+
+.stands{
+  display: flex;
+  justify-content: space-around;
+}
+
+.stand {
+  width: 10px;
+  height: 13px;
+  background-color: #BCBEC0;
+}
+
+.package {
+  width: 20px;
+  height: 20px;
+  background-color: #403F63;
+  animation: goPackage 8s 0.3s linear infinite normal;
+}
+
+.main-factory {
+  width: 100%;
+  height: 100px;
+  background-color: #CFB499;
+  display: flex;
+  flex-direction: column;
+}
+
+.windows{
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.window{
+  width: 25px;
+  height: 25px;
+  background-color: #F5F19A;
+  border: 2px solid #403F63;
+  transition: background-color 0.3s linear;
+  animation: goWindow 3s infinite alternate;
+}
+
+.door-container{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#door {
+  width: 25px;
+  height: 40px;
+  background-color: #403F63;
+  position: relative;
+}
+
+#door:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #F5F19A;
+  position: absolute;
+  top: 21px;
+  left: 15px;
+}
+
+.roof {
+  display: flex;
+}
+
+.roof1-container {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.roof2-container {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  position: relative;
+}
+
+#roof1 {
+  width: 100%;
+  height: 0px;
+  border-top: 30px solid #403F63;
+}
+
+#roof2 {
+  width: 100%;
+  height: 0px;
+  border-top: 30px solid #403F63;
+  position: relative;
+}
+
+.chimney {
+  width: 25px;
+  background-image: linear-gradient(
+    0deg,
+    #E2C4A5 0%, #E2C4A5 57.5%,
+    #BE1E2D 57.5%, #BE1E2D 70%,
+    #E2C4A5 70%, #E2C4A5 77.5%,
+    #BE1E2D 77.5%, #BE1E2D 90%,
+    #E2C4A5 90%
+  );
+}
+
+#chim1 {
+  height: 80px;
+  position: absolute;
+}
+
+#chim2 {
+  height: 80px;
+  position: absolute;
+  bottom: 22px;
+  left: 43px;
+}
+
+.smoke {
+  width: 19px;
+  height: 18px;
+  position: absolute;
+  opacity: 0;
+  transition-property: opacity,webkit-transform;
+  transition-duration: 1s,1s;
+  transition-timing-function: linear,linear;
+  top: -20px;
+}
+
+.sCloud {
+  width: 60%;
+  height: 0.7em;
+  background-color: #19758A;
+  position: absolute;
+  border-radius: 18px;
+}
+
+#smoke1 {
+  animation: goSmoke 5s 0.3s infinite normal;
+}
+
+#smoke2 {
+  animation: goSmoke 5s 1.3s infinite normal;
+}
+
+#sCloud1, #sCloud4{
+  top: 2px;
+}
+
+#sCloud2, #sCloud5{
+  left: 6px;
+}
+
+#sCloud3, #sCloud6{
+  top: 6px;
+  left: 7px;
+}

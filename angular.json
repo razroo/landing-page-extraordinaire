@@ -1,0 +1,1176 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "razroo": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/razroo",
+      "sourceRoot": "apps/razroo/src",
+      "prefix": "razroo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/razroo",
+            "index": "apps/razroo/src/index.html",
+            "main": "apps/razroo/src/main.ts",
+            "polyfills": "apps/razroo/src/polyfills.ts",
+            "tsConfig": "apps/razroo/tsconfig.app.json",
+            "assets": ["apps/razroo/src/favicon.ico", "apps/razroo/src/assets"],
+            "styles": [
+              "apps/razroo/src/styles.scss",
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+            ],
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/razroo/src/environments/environment.ts",
+                  "with": "apps/razroo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "razroo:build",
+            "proxyConfig": "apps/razroo/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "razroo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "razroo:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/razroo/tsconfig.app.json",
+              "apps/razroo/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/razroo/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/razroo/jest.config.js",
+            "tsConfig": "apps/razroo/tsconfig.spec.json",
+            "setupFile": "apps/razroo/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "razroo-e2e": {
+      "root": "apps/razroo-e2e",
+      "sourceRoot": "apps/razroo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/razroo-e2e/cypress.json",
+            "tsConfig": "apps/razroo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "razroo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "razroo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/razroo-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/razroo-e2e/**"]
+          }
+        }
+      }
+    },
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/api/tsconfig.app.json",
+              "apps/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "tsConfig": "apps/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "razroo-home": {
+      "projectType": "library",
+      "root": "libs/razroo/home",
+      "sourceRoot": "libs/razroo/home/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/home/tsconfig.lib.json",
+              "libs/razroo/home/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/home/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/home/jest.config.js",
+            "tsConfig": "libs/razroo/home/tsconfig.spec.json",
+            "setupFile": "libs/razroo/home/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-common-ui": {
+      "projectType": "library",
+      "root": "libs/razroo/common/ui",
+      "sourceRoot": "libs/razroo/common/ui/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/common/ui/tsconfig.lib.json",
+              "libs/razroo/common/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/common/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/common/ui/jest.config.js",
+            "tsConfig": "libs/razroo/common/ui/tsconfig.spec.json",
+            "setupFile": "libs/razroo/common/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-blog": {
+      "projectType": "library",
+      "root": "libs/razroo/blog",
+      "sourceRoot": "libs/razroo/blog/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/blog/tsconfig.lib.json",
+              "libs/razroo/blog/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/blog/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/blog/jest.config.js",
+            "tsConfig": "libs/razroo/blog/tsconfig.spec.json",
+            "setupFile": "libs/razroo/blog/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-data-graphql": {
+      "projectType": "library",
+      "root": "libs/razroo/data-graphql",
+      "sourceRoot": "libs/razroo/data-graphql/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/data-graphql/tsconfig.lib.json",
+              "libs/razroo/data-graphql/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/data-graphql/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/data-graphql/jest.config.js",
+            "tsConfig": "libs/razroo/data-graphql/tsconfig.spec.json",
+            "setupFile": "libs/razroo/data-graphql/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-data-services": {
+      "projectType": "library",
+      "root": "libs/razroo/data-services",
+      "sourceRoot": "libs/razroo/data-services/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/data-services/tsconfig.lib.json",
+              "libs/razroo/data-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/data-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/data-services/jest.config.js",
+            "tsConfig": "libs/razroo/data-services/tsconfig.spec.json",
+            "setupFile": "libs/razroo/data-services/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-data-models": {
+      "projectType": "library",
+      "root": "libs/razroo/data-models",
+      "sourceRoot": "libs/razroo/data-models/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/data-models/tsconfig.lib.json",
+              "libs/razroo/data-models/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/data-models/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/data-models/jest.config.js",
+            "tsConfig": "libs/razroo/data-models/tsconfig.spec.json",
+            "setupFile": "libs/razroo/data-models/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-data-access-posts": {
+      "projectType": "library",
+      "root": "libs/razroo/data-access/posts",
+      "sourceRoot": "libs/razroo/data-access/posts/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/data-access/posts/tsconfig.lib.json",
+              "libs/razroo/data-access/posts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/razroo/data-access/posts/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/data-access/posts/jest.config.js",
+            "tsConfig": "libs/razroo/data-access/posts/tsconfig.spec.json",
+            "setupFile": "libs/razroo/data-access/posts/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-ui-blog-content": {
+      "projectType": "library",
+      "root": "libs/razroo/ui/blog-content",
+      "sourceRoot": "libs/razroo/ui/blog-content/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/ui/blog-content/tsconfig.lib.json",
+              "libs/razroo/ui/blog-content/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/ui/blog-content/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/ui/blog-content/jest.config.js",
+            "tsConfig": "libs/razroo/ui/blog-content/tsconfig.spec.json",
+            "setupFile": "libs/razroo/ui/blog-content/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-bg": {
+      "projectType": "library",
+      "root": "libs/common/ui/bg",
+      "sourceRoot": "libs/common/ui/bg/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/bg/tsconfig.lib.json",
+              "libs/common/ui/bg/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/bg/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/bg/jest.config.js",
+            "tsConfig": "libs/common/ui/bg/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/bg/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-directives": {
+      "projectType": "library",
+      "root": "libs/common/directives",
+      "sourceRoot": "libs/common/directives/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/directives/tsconfig.lib.json",
+              "libs/common/directives/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/directives/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/directives/jest.config.js",
+            "tsConfig": "libs/common/directives/tsconfig.spec.json",
+            "setupFile": "libs/common/directives/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-about": {
+      "projectType": "library",
+      "root": "libs/razroo/about",
+      "sourceRoot": "libs/razroo/about/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/about/tsconfig.lib.json",
+              "libs/razroo/about/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/about/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/about/jest.config.js",
+            "tsConfig": "libs/razroo/about/tsconfig.spec.json",
+            "setupFile": "libs/razroo/about/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-product": {
+      "projectType": "library",
+      "root": "libs/razroo/product",
+      "sourceRoot": "libs/razroo/product/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/product/tsconfig.lib.json",
+              "libs/razroo/product/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/product/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/product/jest.config.js",
+            "tsConfig": "libs/razroo/product/tsconfig.spec.json",
+            "setupFile": "libs/razroo/product/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-books": {
+      "projectType": "library",
+      "root": "libs/razroo/books",
+      "sourceRoot": "libs/razroo/books/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/books/tsconfig.lib.json",
+              "libs/razroo/books/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/books/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/books/jest.config.js",
+            "tsConfig": "libs/razroo/books/tsconfig.spec.json",
+            "setupFile": "libs/razroo/books/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-shelf": {
+      "projectType": "library",
+      "root": "libs/common/ui/shelf",
+      "sourceRoot": "libs/common/ui/shelf/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/shelf/tsconfig.lib.json",
+              "libs/common/ui/shelf/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/shelf/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/shelf/jest.config.js",
+            "tsConfig": "libs/common/ui/shelf/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/shelf/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-hanging-light": {
+      "projectType": "library",
+      "root": "libs/common/ui/hanging-light",
+      "sourceRoot": "libs/common/ui/hanging-light/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/hanging-light/tsconfig.lib.json",
+              "libs/common/ui/hanging-light/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/ui/hanging-light/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/hanging-light/jest.config.js",
+            "tsConfig": "libs/common/ui/hanging-light/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/hanging-light/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-particles": {
+      "projectType": "library",
+      "root": "libs/common/ui/particles",
+      "sourceRoot": "libs/common/ui/particles/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/particles/tsconfig.lib.json",
+              "libs/common/ui/particles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/particles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/particles/jest.config.js",
+            "tsConfig": "libs/common/ui/particles/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/particles/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-rocket-ship": {
+      "projectType": "library",
+      "root": "libs/common/ui/rocket-ship",
+      "sourceRoot": "libs/common/ui/rocket-ship/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/rocket-ship/tsconfig.lib.json",
+              "libs/common/ui/rocket-ship/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/rocket-ship/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/rocket-ship/jest.config.js",
+            "tsConfig": "libs/common/ui/rocket-ship/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/rocket-ship/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-factory": {
+      "projectType": "library",
+      "root": "libs/common/ui/factory",
+      "sourceRoot": "libs/common/ui/factory/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/factory/tsconfig.lib.json",
+              "libs/common/ui/factory/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/factory/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/factory/jest.config.js",
+            "tsConfig": "libs/common/ui/factory/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/factory/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-launch-pad": {
+      "projectType": "library",
+      "root": "libs/common/ui/launch-pad",
+      "sourceRoot": "libs/common/ui/launch-pad/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/launch-pad/tsconfig.lib.json",
+              "libs/common/ui/launch-pad/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/launch-pad/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/launch-pad/jest.config.js",
+            "tsConfig": "libs/common/ui/launch-pad/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/launch-pad/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-star-field": {
+      "projectType": "library",
+      "root": "libs/common/ui/star-field",
+      "sourceRoot": "libs/common/ui/star-field/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/star-field/tsconfig.lib.json",
+              "libs/common/ui/star-field/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/star-field/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/star-field/jest.config.js",
+            "tsConfig": "libs/common/ui/star-field/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/star-field/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-mountains": {
+      "projectType": "library",
+      "root": "libs/common/ui/mountains",
+      "sourceRoot": "libs/common/ui/mountains/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/mountains/tsconfig.lib.json",
+              "libs/common/ui/mountains/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/mountains/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/mountains/jest.config.js",
+            "tsConfig": "libs/common/ui/mountains/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/mountains/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-consulting": {
+      "projectType": "library",
+      "root": "libs/razroo/consulting",
+      "sourceRoot": "libs/razroo/consulting/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/consulting/tsconfig.lib.json",
+              "libs/razroo/consulting/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/razroo/consulting/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/consulting/jest.config.js",
+            "tsConfig": "libs/razroo/consulting/tsconfig.spec.json",
+            "setupFile": "libs/razroo/consulting/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-services": {
+      "projectType": "library",
+      "root": "libs/common/services",
+      "sourceRoot": "libs/common/services/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/services/tsconfig.lib.json",
+              "libs/common/services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/services/jest.config.js",
+            "tsConfig": "libs/common/services/tsconfig.spec.json",
+            "setupFile": "libs/common/services/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-models": {
+      "projectType": "library",
+      "root": "libs/common/models",
+      "sourceRoot": "libs/common/models/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/models/tsconfig.lib.json",
+              "libs/common/models/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/models/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/models/jest.config.js",
+            "tsConfig": "libs/common/models/tsconfig.spec.json",
+            "setupFile": "libs/common/models/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-styles": {
+      "projectType": "library",
+      "root": "libs/common/styles",
+      "sourceRoot": "libs/common/styles/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/styles/tsconfig.lib.json",
+              "libs/common/styles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/styles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/styles/jest.config.js",
+            "tsConfig": "libs/common/styles/tsconfig.spec.json",
+            "setupFile": "libs/common/styles/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-lake": {
+      "projectType": "library",
+      "root": "libs/common/ui/lake",
+      "sourceRoot": "libs/common/ui/lake/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/lake/tsconfig.lib.json",
+              "libs/common/ui/lake/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/lake/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/lake/jest.config.js",
+            "tsConfig": "libs/common/ui/lake/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/lake/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "razroo-common-directives": {
+      "projectType": "library",
+      "root": "libs/razroo/common/directives",
+      "sourceRoot": "libs/razroo/common/directives/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/razroo/common/directives/tsconfig.lib.json",
+              "libs/razroo/common/directives/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/razroo/common/directives/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/razroo/common/directives/jest.config.js",
+            "tsConfig": "libs/razroo/common/directives/tsconfig.spec.json",
+            "setupFile": "libs/razroo/common/directives/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-submarine": {
+      "projectType": "library",
+      "root": "libs/common/ui/submarine",
+      "sourceRoot": "libs/common/ui/submarine/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/submarine/tsconfig.lib.json",
+              "libs/common/ui/submarine/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/submarine/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/submarine/jest.config.js",
+            "tsConfig": "libs/common/ui/submarine/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/submarine/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-table-of-contents": {
+      "projectType": "library",
+      "root": "libs/common/ui/table-of-contents",
+      "sourceRoot": "libs/common/ui/table-of-contents/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/table-of-contents/tsconfig.lib.json",
+              "libs/common/ui/table-of-contents/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/ui/table-of-contents/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/table-of-contents/jest.config.js",
+            "tsConfig": "libs/common/ui/table-of-contents/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/table-of-contents/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-ui-street-light": {
+      "projectType": "library",
+      "root": "libs/common/ui/street-light",
+      "sourceRoot": "libs/common/ui/street-light/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui/street-light/tsconfig.lib.json",
+              "libs/common/ui/street-light/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui/street-light/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui/street-light/jest.config.js",
+            "tsConfig": "libs/common/ui/street-light/tsconfig.spec.json",
+            "setupFile": "libs/common/ui/street-light/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "common-typings": {
+      "projectType": "library",
+      "root": "libs/common/typings",
+      "sourceRoot": "libs/common/typings/src",
+      "prefix": "razroo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/typings/tsconfig.lib.json",
+              "libs/common/typings/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/typings/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/typings/jest.config.js",
+            "tsConfig": "libs/common/typings/tsconfig.spec.json",
+            "setupFile": "libs/common/typings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "razroo"
+}

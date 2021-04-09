@@ -1,0 +1,19 @@
+$shelf-width: 150px;
+
+.shelf-container {
+  width: 150px;
+}
+
+.shelf {
+  border-bottom: #{$shelf-width / 3} solid black;
+  border-left: #{$shelf-width/10} solid transparent;
+  border-right: #{$shelf-width/10} solid transparent;
+  width: 100%;
+}
+
+.shelf-bottom {
+  opacity: 0.8;
+  width: calc(100% + #{$shelf-width/5});
+  height: #{$shelf-width/10};
+  background-color: black;
+}

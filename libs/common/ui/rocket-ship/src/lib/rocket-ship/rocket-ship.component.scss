@@ -1,0 +1,97 @@
+/* note to self due to thruster and rocket wings in addition to the height
+there is a need for there to be an extra height of 15px in adition to rocket*/
+
+#rocket_container {
+  position: relative;
+  z-index: 4;
+  height: 155px;
+  width: 100px;
+}
+
+#rocket {
+  position: absolute;
+  width: 50px;
+  height: 140px;
+  border-radius: 50% 50% 0 0;
+  background: blue;
+}
+
+#rocket-windows{
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+    background: #fff;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #333;
+    background:
+        linear-gradient(135deg,
+          rgba(158,207,215,1) 0%,rgba(158,207,215,1) 6%,
+          rgba(174,219,223,1) 7%,rgba(174,219,223,1) 10%,
+          rgba(158,207,215,1) 10%,rgba(158,207,215,1) 22%,
+          rgba(174,219,223,1) 22%,rgba(174,219,223,1) 33%,
+          rgba(158,207,215,1) 33%,rgba(158,207,215,1) 40%,
+          rgba(174,219,223,1) 40%,rgba(174,219,223,1) 42%,
+          rgba(158,207,215,1) 42%,rgba(158,207,215,1) 76%,
+          rgba(174,219,223,1) 76%,rgba(174,219,223,1) 87%,
+          rgba(158,207,215,1) 87%);
+  }
+  &:before{
+    top: 60px;
+  }
+  &:after {
+    top: 30px;
+  }
+}
+
+#letter-r{
+  position: absolute;
+  font-family: Courier;
+  color: red;
+  font-size: 40px;
+  font-weight: 300;
+  left: 13px;
+  top: 95px;
+}
+
+#rocket-wings {
+  &:before, &:after {
+    content: '';
+    bottom: -7px;
+    background-color: blue;
+    position: absolute;
+    width: 16px;
+    height: 40px;
+  }
+  &:before {
+    left: -16px;
+    transform: skew(0deg, -40deg);
+  }
+  &:after {
+    right: -16px;
+    transform: skew(0deg, 40deg);
+  }
+}
+
+#thruster{
+  position: absolute;
+  z-index: -1;
+  margin-left: -5px;
+  bottom: 0;
+  border: 30px solid transparent;
+  border-bottom: 40px solid blue;
+}
+
+#rocket-ignit {
+  position: absolute;
+  z-index: -2;
+  margin-left: 9px;
+  bottom: -30px;
+  border: 15px solid transparent;
+  border-top: 40px solid #c11;
+  background: linear-gradient(45deg, white, black 10%);
+
+}

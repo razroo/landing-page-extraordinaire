@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'libs/common/styles/variables';
+@import 'libs/common/styles/normalize';
+@import 'libs/common/ui/table-of-contents/src/lib/table-of-contents/_table-of-contents-theme.scss';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-feature-settings: "liga","tnum","case","calt","zero","ss01","locl","calt";
+  font-feature-settings: "liga","tnum","case","calt","zero","ss01","locl","calt";
+  -webkit-font-variant-ligatures: contextual;
+  font-variant-ligatures: contextual;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+}
+
+// always include only once per project
+@include mat-core();
+
+// Creates a container object for a light theme to be given to individual component theme mixins.
+@function razroo-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $mat-light-theme-foreground,
+    background: $razroo-theme-background,
+  );
+}
+
+//@include angular-material-theme($mat-light-theme-background);
+$razroo-theme: razroo-theme(mat-palette($razroo-primary-blue), mat-palette($razroo-secondary-red));
+
+// Include the default theme styles.
+@include angular-material-theme($razroo-theme);
+@include table-of-contents-theme($razroo-theme);

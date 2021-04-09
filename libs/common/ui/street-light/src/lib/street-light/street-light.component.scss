@@ -1,0 +1,40 @@
+$street-light-background: #BE1E2D;
+$street-light-pole-background-color: #BE1E2D;
+
+$lamp-pole-width: 3px;
+$lamp-base-width: $lamp-pole-width * 3;
+$lamp-bulb-width: $lamp-pole-width * 5;
+
+// lamp pole
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.street-light-bulb {
+  $light-bulb-border-size: 3px;
+  content: '';
+  background-color: yellow;
+  border: 3px solid #BE1E2D;
+  width: $lamp-bulb-width;
+  height: $lamp-bulb-width;
+  border-radius: 50%;
+  box-shadow: 0 0 $lamp-bulb-width yellow;
+}
+
+.street-light-pole {
+  background-color: $street-light-background;
+  width: 3px;
+  height: 80px;
+}
+
+.street-light-base {
+  content: '';
+  background-color: $street-light-pole-background-color;
+  width: $lamp-base-width;
+  height: 30px;
+  border-radius: $lamp-base-width $lamp-base-width 0 0;
+}
+
+

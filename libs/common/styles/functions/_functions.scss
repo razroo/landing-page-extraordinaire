@@ -1,0 +1,21 @@
+// Gutter variables, for padding + margin
+// function to take in multiplier(8), which must emit of one of values
+// within rz-space-amounts
+@function rz-space-multiplier($n) {
+  $rz-space-amounts: (0, 4, 8, 16, 24, 32, 40, 48, 56, 64); $rz-space-multiplier: 8;
+  @if(index($rz-space-amounts, ($n * $rz-space-multiplier))) { @return #{$n * $rz-space-multiplier}px;
+  }
+  @else {
+    @error "Must contain one of the following numbers: #{$rz-space- amounts}.";
+  }
+}
+
+// breakpoints to be used in conjunction with media queries across app
+@function ill-breakpoint($breakpoint) { $breakpoints: (
+  'extra-small': 599, 'small': 959, 'medium': 1279, 'large': 1919, 'extra-large': 5000
+);
+  @if (map-get($breakpoints, $breakpoint)) {
+    @return #{map-get($breakpoints, $breakpoint)}px; } @else {
+    @error 'Must contain one of the following strings: #{$breakpoints}.' ;
+  }
+}

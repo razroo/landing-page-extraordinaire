@@ -1,0 +1,234 @@
+.landing {
+  position: relative;
+  width: 100%;
+}
+
+.tri {
+  width: 30%;
+  padding-bottom: 21%;
+  position: relative;
+  overflow: hidden;
+}
+.tri:before {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 104%;
+  background: rgb(254, 194, 178);
+  background: linear-gradient(180deg, #001429 0%, #000a15 55%);
+  border-radius: 20px;
+  transform-origin: 0 100%;
+  transform: rotate(45deg);
+}
+
+.small-mountains .tri:nth-child(1) {
+  bottom: 0;
+  position: absolute;
+  left: -7%;
+}
+
+.small-mountains .tri:nth-child(2) {
+  bottom: 0;
+  position: absolute;
+  left: 40%;
+}
+
+.small-mountains .tri:nth-child(3) {
+  bottom: 0;
+  position: absolute;
+  right: -10%;
+}
+
+.tri2 {
+  width: 48%;
+  padding-bottom: 33%;
+  position: relative;
+  overflow: hidden;
+}
+.tri2:before {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 104%;
+  background: rgb(254, 194, 178);
+  background: linear-gradient(180deg, #001429 0%, #000a15 55%);
+  border-radius: 20px;
+  transform-origin: 0 100%;
+  transform: rotate(45deg);
+}
+
+.tall-mountains .tri2:nth-child(1) {
+  bottom: 0;
+  position: absolute;
+  left: 0%;
+}
+
+.tall-mountains .tri2:nth-child(2) {
+  bottom: 0;
+  position: absolute;
+  left: 14%;
+}
+
+.tall-mountains .tri2:nth-child(3) {
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+}
+
+/* Foreground mountains */
+
+.tri3 {
+  width: 19%;
+  padding-bottom: 13%;
+  position: relative;
+  overflow: hidden;
+}
+
+.tri3:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 104%;
+  background: linear-gradient(180deg, #001429 0%, #000a15 72%);
+  border-radius: 18px;
+  transform-origin: 0 100%;
+  transform: rotate(45deg);
+}
+
+.tiny-mountains .tri3:nth-child(1) {
+  bottom: 0;
+  position: absolute;
+  left: 9%;
+}
+.tiny-mountains .tri3:nth-child(2) {
+  bottom: -3%;
+  position: absolute;
+  left: 31%;
+}
+
+.tiny-mountains .tri3:nth-child(3) {
+  bottom: -7%;
+  position: absolute;
+  left: 42%;
+}
+
+.tiny-mountains .tri3:nth-child(4) {
+  bottom: 0;
+  position: absolute;
+  left: 72%;
+}
+
+.tiny-mountains .tri3:nth-child(5) {
+  bottom: -5%;
+  position: absolute;
+  left: 62%;
+}
+.ground {
+  position: relative;
+  height: 25%;
+  background: rgb(255, 246, 202);
+  background: linear-gradient(
+      180deg,
+      rgba(255, 246, 202, 1) 0%,
+      rgba(255, 229, 164, 1) 72%
+  );
+}
+
+#clouds {
+  padding: 4vw 0;
+}
+
+/* base of cloud */
+.cloud {
+  height: 4vw;
+  width: 18vw;
+  background: white;
+  border-top-left-radius: 20vw;
+  border-bottom-right-radius: 20vw;
+  //border-radius: 40vw;
+  position: relative;
+}
+
+.cloud-2 {
+  width: 8vw;
+  border-top-right-radius: 5vw;
+  border-bottom-left-radius: 5vw;
+}
+
+/* smaller circle within cloud */
+.cloud-3:before {
+  content: "";
+  position: absolute;
+  top: -2vw;
+  height: 2.5vw;
+  width: 8vw;
+  left: 4vw;
+  border-top-left-radius: 20vw;
+  border-top-right-radius: 20vw;
+  background: white;
+}
+
+#clouds .cloud:nth-child(1) {
+  opacity: 0.7;
+  animation: moveclouds 90s linear infinite;
+}
+#clouds .cloud:nth-child(2) {
+  left: 75%;
+  opacity: 0.5;
+  animation: moveclouds 120s linear infinite;
+}
+#clouds .cloud:nth-child(3) {
+  left: 50%;
+  z-index: 1;
+  animation: moveclouds 150s linear infinite;
+}
+#clouds .cloud:nth-child(4) {
+  left: 90%;
+  opacity: 0.7;
+  transform: scale(0.6);
+  animation: moveclouds 80s linear infinite;
+}
+#clouds .cloud:nth-child(5) {
+  left: 100%;
+  opacity: 0.4;
+  z-index: 1;
+
+  transform: scale(0.8);
+
+  animation: moveclouds 95s linear infinite;
+}
+@keyframes moveclouds {
+  0% {
+    margin-left: 1000px;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}
+
+@-webkit-keyframes moveclouds {
+  0% {
+    margin-left: 1000px;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}
+@-moz-keyframes moveclouds {
+  0% {
+    margin-left: 1000px;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}
+@-o-keyframes moveclouds {
+  0% {
+    margin-left: 1000px;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}

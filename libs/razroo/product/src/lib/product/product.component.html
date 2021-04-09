@@ -1,0 +1,49 @@
+<razroo-bg [bgColor]="color"></razroo-bg>
+
+<div class="container">
+  <razroo-star-field class="star-field">
+    <div class="moon"></div>
+    <razroo-mountains [mountainsColor]="color"></razroo-mountains>
+    <div class="title">
+      <h1>Reach for the Stars</h1>
+      <h1>{{ timeUntil }} </h1>
+      <h1>Until Next Launch!!!</h1>
+    </div>
+  </razroo-star-field>
+
+  <div class="gate-row">
+    <div class="street-light-row">
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+      <razroo-street-light></razroo-street-light>
+    </div>
+  </div>
+
+  <div class="road">
+    <div class="cargo-warehouse"></div>
+    <div class="crane"></div>
+    <div class="airplane"></div>
+  </div>
+
+  <div class="scene-container">
+    <razroo-factory class="factory"></razroo-factory>
+    <div class="truck"></div>
+    <div class="rocket-container">
+      <razroo-rocket-ship class="rocket-ship"></razroo-rocket-ship>
+      <razroo-launch-pad></razroo-launch-pad>
+    </div>
+  </div>
+  <div class="gate-row gate-row-bottom"></div>
+  <!-- Lake Potentially Move Over to It's Own Component -->
+  <razroo-lake class="lake">
+    <razroo-submarine></razroo-submarine>
+  </razroo-lake>
+</div>
+
+

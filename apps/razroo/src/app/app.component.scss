@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+@import 'libs/common/styles/_themes';
+
+.background-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: map_get($razroo-background-yellow, 50);
+  overflow: auto;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}

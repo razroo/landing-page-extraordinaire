@@ -1,0 +1,74 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "types": [],
+    "lib": ["es2017", "dom", "esnext.asynciterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@razroo/razroo/home": ["libs/razroo/home/src/index.ts"],
+      "@razroo/razroo/common/ui": ["libs/razroo/common/ui/src/index.ts"],
+      "@razroo/razroo/blog": ["libs/razroo/blog/src/index.ts"],
+      "@razroo/razroo/data-graphql": ["libs/razroo/data-graphql/src/index.ts"],
+      "@razroo/razroo/data-services": [
+        "libs/razroo/data-services/src/index.ts"
+      ],
+      "@razroo/razroo/data-models": ["libs/razroo/data-models/src/index.ts"],
+      "@razroo/razroo/data-access/posts": [
+        "libs/razroo/data-access/posts/src/index.ts"
+      ],
+      "@razroo/razroo/ui/blog-content": [
+        "libs/razroo/ui/blog-content/src/index.ts"
+      ],
+      "@razroo/common/ui/bg": ["libs/common/ui/bg/src/index.ts"],
+      "@razroo/common/directives": ["libs/common/directives/src/index.ts"],
+      "@razroo/razroo/about": ["libs/razroo/about/src/index.ts"],
+      "@razroo/razroo/product": ["libs/razroo/product/src/index.ts"],
+      "@razroo/razroo/books": ["libs/razroo/books/src/index.ts"],
+      "@razroo/common/ui/shelf": ["libs/common/ui/shelf/src/index.ts"],
+      "@razroo/common/ui/hanging-light": [
+        "libs/common/ui/hanging-light/src/index.ts"
+      ],
+      "@razroo/common/ui/particles": ["libs/common/ui/particles/src/index.ts"],
+      "@razroo/common/ui/rocket-ship": [
+        "libs/common/ui/rocket-ship/src/index.ts"
+      ],
+      "@razroo/common/ui/factory": ["libs/common/ui/factory/src/index.ts"],
+      "@razroo/common/ui/launch-pad": [
+        "libs/common/ui/launch-pad/src/index.ts"
+      ],
+      "@razroo/common/ui/star-field": [
+        "libs/common/ui/star-field/src/index.ts"
+      ],
+      "@razroo/common/ui/mountains": ["libs/common/ui/mountains/src/index.ts"],
+      "@razroo/razroo/consulting": ["libs/razroo/consulting/src/index.ts"],
+      "@razroo/common/services": ["libs/common/services/src/index.ts"],
+      "@razroo/common/models": ["libs/common/models/src/index.ts"],
+      "@razroo/common/styles": ["libs/common/styles/src/index.ts"],
+      "@razroo/common/ui/lake": ["libs/common/ui/lake/src/index.ts"],
+      "@razroo/razroo/common/directives": [
+        "libs/razroo/common/directives/src/index.ts"
+      ],
+      "@razroo/common/ui/submarine": ["libs/common/ui/submarine/src/index.ts"],
+      "@razroo/common/ui/table-of-contents": [
+        "libs/common/ui/table-of-contents/src/index.ts"
+      ],
+      "@razroo/common/ui/street-light": [
+        "libs/common/ui/street-light/src/index.ts"
+      ],
+      "@razroo/common/typings": ["libs/common/typings/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

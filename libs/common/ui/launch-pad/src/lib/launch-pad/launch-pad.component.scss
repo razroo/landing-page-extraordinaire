@@ -1,0 +1,40 @@
+:before, :after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.launch_pad{
+  height: 301px;
+  width: 181px;
+  background: url("apps/razroo/src/assets/images/product/launch_pad.svg");
+  margin-top: auto;
+  background-repeat: no-repeat;
+}
+
+$rc: yellow;
+
+.ledButton{
+  position: absolute;
+  margin-top: 1px;
+  margin-left: 149px;
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  margin-right: -72px;
+  box-shadow: 0 5px 0 $rc, 0 5px 5px $rc, 0 5px 10px $rc, 0 25px 0 $rc, 0 25px 5px $rc, 0 25px 10px $rc, 0 45px 0 $rc, 0 45px 5px $rc, 0 45px 10px $rc;
+  animation: 2s radio infinite;
+}
+
+.radio:after {
+  animation-delay: .2s;
+}
+
+@keyframes radio {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

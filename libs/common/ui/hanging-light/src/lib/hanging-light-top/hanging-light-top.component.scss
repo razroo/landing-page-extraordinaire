@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.light-pole {
+  width: 5px;
+  height: 200px;
+  background: black;
+}
+
+$size: 45px;
+.light-cover {
+  height: $size;
+  width: 20%;
+  border-top-left-radius: $size * 2;
+  border-top-right-radius: $size * 2;
+  background-color: black;
+}
+
+$light-bulb-size: $size / 4;
+.light-bulb {
+  height: $light-bulb-size;
+  width: $light-bulb-size * 2;
+  border-bottom-left-radius: $light-bulb-size * 2;
+  border-bottom-right-radius: $light-bulb-size * 2;
+  background-color: yellow;
+}
